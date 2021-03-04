@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import NavBar from "./view/NavBar";
+import Videos from "./view/Videos";
 import Axios from "axios";
 Axios.defaults.baseURL = "/api";
 
 const App = () => {
   return (
     <Router>
-      <Switch>
-        <Route path="/" component={Home} />
-      </Switch>
+      <NavBar>
+        <Switch>
+          <Route path="/Videos" component={Videos} />
+          <Route path="/" component={Home} />
+        </Switch>
+      </NavBar>
     </Router>
   );
 };
