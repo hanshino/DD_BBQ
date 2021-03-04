@@ -1,4 +1,4 @@
-const YoutubeModel = require("../models/YoutubeModel");
+const YoutubeRepo = require("../repositories/YoutubeRepository");
 exports.api = {};
 
 exports.api.getChannelRecentInfo = async (req, res) => {
@@ -7,9 +7,7 @@ exports.api.getChannelRecentInfo = async (req, res) => {
 
     if (!channelId) throw "channel id empty";
 
-    let result = await YoutubeModel.getChannelRecentInfo(channelId);
-
-    res.json(result);
+    res.json(await YoutubeRepo.getChannelRecentInfo(channelId));
   } catch (e) {
     console.error(e);
     res.status(400).json({ message: e });
