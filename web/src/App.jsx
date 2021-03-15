@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "./view/NavBar";
+import MainPage from "./view/MainPage";
+import ChannelVideos from "./view/ChannelVideos";
 import Videos from "./view/Videos";
 import Axios from "axios";
 Axios.defaults.baseURL = "/api";
@@ -10,7 +12,9 @@ const App = () => {
     <Router>
       <NavBar>
         <Switch>
-          <Route path="/Videos" component={Videos} />
+          <Route path="/MainPage/ChannelVideos/:channelId/:videoId" component={Videos} />
+          <Route path="/MainPage/ChannelVideos/:channelId" component={ChannelVideos} />
+          <Route path="/MainPage" component={MainPage} />
           <Route path="/" component={Home} />
         </Switch>
       </NavBar>
