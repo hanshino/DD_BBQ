@@ -34,13 +34,10 @@ services:
       context: "./backend"
       dockerfile: "Dockerfile"
     logging: *default-logging
-    networks:
-      - server_network
+    links:
+      - mysql
     volumes:
-      - ./backend:/application
-      - exclude_backend:/application/node_modules
-    environment:
-      - "NODE_ENV=development"
+      - ./:/var/www/html
     command: ["yarn", "dev"]
 
   mongo:
