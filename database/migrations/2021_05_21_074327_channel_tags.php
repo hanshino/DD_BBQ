@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class ChannelTags extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+        Schema::create('channel_tags', function (Blueprint $table) {
+            $table->bigIncrements('id');
+
+            $table->string('channel_id')->comment('頻道id')->nullable(false);
+            $table->string('tag')->comment('關聯標籤')->nullable(false);
+
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('channel_tags');
     }
 }
