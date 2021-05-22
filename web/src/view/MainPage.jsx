@@ -46,9 +46,9 @@ const holodata = [
   {
     name: "name",
     imgsrc:
-      "https://yt3.ggpht.com/ytc/AAUvwnjXQ3Gt3t3SdUMZHBhhEb_c1jqThHfDaVNJF_LJ=s176-c-k-c0x00ffffff-no-rj",
+      "https://yt3.ggpht.com/ytc/AAUvwnitKO1oRAtdofjPuRx8I8QOMyyPcJ5TA1biR8rpzw=s176-c-k-c0x00ffffff-no-rj",
     generation: 1,
-    channelid: "123",
+    channelid: "UC9Z55NM455lDvD3yTGiBodw",
   },
   {
     name: "name",

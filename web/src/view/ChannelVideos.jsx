@@ -31,6 +31,9 @@ const useStyles = makeStyles(theme => ({
     maxWidth: "100%",
     maxHeight: "100%",
   },
+  title: {
+    maxWidth: "200px",
+  },
 }));
 
 const ChannelVideos = () => {
@@ -47,6 +50,7 @@ const YtPic = props => {
       setchannelrecentinfo(response.data);
     });
   };
+
   useEffect(() => {
     getChanneRecentlInfo();
   }, []);
@@ -57,8 +61,8 @@ const YtPic = props => {
 
   console.log(channelrecentinfo);
   return (
-    <Grid item container>
-      <Grid container item spacing={2}>
+    <Grid item container direction="row" justify="flex-start" alignItems="flex-start">
+      <Grid container item>
         {date.map(date => (
           <Pictures
             key={date}
@@ -70,6 +74,7 @@ const YtPic = props => {
     </Grid>
   );
 };
+
 YtPic.propTypes = {
   channelId: PropTypes.string.isRequired,
 };
@@ -85,27 +90,34 @@ const Pictures = props => {
       <Grid item>
         <Typography variant="h4">{date}</Typography>
       </Grid>
-      {video.map((video, index) => {
-        console.log(video.videoid);
-        return (
-          <Grid item container key={index} direction="column" alignItems="center">
-            <Grid item>
-              <Link
-                to={{
-                  pathname: `/MainPage/ChannelVideos/${channelId}/${video.videoid}`,
-                }}
-              >
-                <ButtonBase className={classes.image}>
-                  <img alt="complex" src={video.imgurl} />
-                </ButtonBase>
-              </Link>
+      <Grid item container direction="row" justify="flex-start" alignItems="flex-start">
+        {video.map((video, index) => {
+          console.log(video.videoid);
+          return (
+            <Grid item container key={index} direction="column" justify="center" xs={3}>
+              <Grid item>
+                <Link
+                  to={{
+                    pathname: `/MainPage/ChannelVideos/${channelId}/${video.videoid}`,
+                  }}
+                >
+                  <ButtonBase
+                    className={classes.image}
+                    style={{
+                      width: "20%",
+                    }}
+                  >
+                    <img alt="complex" src={video.imgurl} />
+                  </ButtonBase>
+                </Link>
+              </Grid>
+              <Grid item className={classes.title}>
+                <Typography variant="h8">{video.title}</Typography>
+              </Grid>
             </Grid>
-            <Grid item>
-              <Typography variant="h5">{video.title}</Typography>
-            </Grid>
-          </Grid>
-        );
-      })}
+          );
+        })}
+      </Grid>
     </Grid>
   );
 };
